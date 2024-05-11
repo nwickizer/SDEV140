@@ -1,10 +1,15 @@
 from tkinter import *
+import tkinter as tk
 from tkinter import messagebox
-
+ 
 
 root = Tk()
 root.title("Tic-Tac-Toe")
 
+
+start_btn_img = PhotoImage(file="start button.png")
+quit_btn_img = PhotoImage(file="quit button.png")
+title_img = PhotoImage(file="ttt.png")
 
 def start_game():
     # hide main menu and start game
@@ -57,13 +62,17 @@ def create_game_grid():
 main_menu_frame = Frame(root)
 main_menu_frame.grid(row=0, column=0)
 
+# title image
+label = tk.Label(main_menu_frame, image=title_img)
+label.grid(row=0, column=0)
+
 # start game button in main menu
-start_game_button = Button(main_menu_frame, text="Start Game", font=("Arial", 18), command=start_game)
-start_game_button.grid(row=0, column=0, pady=20)
+start_game_button = Button(main_menu_frame, image=start_btn_img, font=("Arial", 18), command=start_game, text="Game", compound="top")
+start_game_button.grid(row=1, column=0)
 
 # exit button in main menu
-exit_button = Button(main_menu_frame, text="Exit", font=("Arial", 18), command=exit_game)
-exit_button.grid(row=1, column=0)
+exit_button = Button(main_menu_frame, image=quit_btn_img, font=("Arial", 18), command=exit_game, text="Game", compound="top")
+exit_button.grid(row=2, column=0)
 
 # game frame
 game_frame = Frame(root)
@@ -238,9 +247,6 @@ options_menu.add_command(label="Reset", command=reset)
 # display the main menu
 main_menu_frame.grid(row=0, column=0)
 
-
-# display the main menu
-main_menu_frame.grid(row=0, column=0)
 
 root.mainloop()
 
